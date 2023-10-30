@@ -9,17 +9,14 @@ int check_cycle(listint_t *list)
 	listint_t *node1 = NULL, *node2 = NULL;
 
 	node1 = node2 = list;
-	while (node1 != NULL && node2 != NULL)
+	while (node1 != NULL && node2 != NULL && node2->next != NULL)
 	{
 		node1 = node1->next;
-		if (node2->next != NULL)
-			node2 = node2->next->next;
-		else
-			node2 = NULL;
+		node2 = node2->next->next;
 		if (node1 == node2)
-			return (1);
+			break;
 	}
-	if (node1 == NULL || node2 == NULL)
+	if (node1 == NULL || node2 == NULL || node2->next == NULL)
 		return (0);
 	return (1);
 }
