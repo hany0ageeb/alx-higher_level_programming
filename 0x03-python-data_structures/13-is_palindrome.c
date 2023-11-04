@@ -37,7 +37,7 @@ int is_palindrome(listint_t **head)
 		return (1);
 	last = make_it_doubly_linked(*head);
 	first = *head;
-	while (first->previous != last && first != last)
+	while (first->previous != last && first->next != last->previous)
 	{
 		if (first->n != last->n)
 			return (0);
