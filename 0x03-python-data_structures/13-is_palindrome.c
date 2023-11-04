@@ -1,27 +1,5 @@
 #include "lists.h"
-#include <stdio.h>
 
-/**
- * make_it_doubly_linked - make listint_t a doubly linked list
- * @head: head node
- * Return: pointer to tail node
- */
-listint_t *make_it_doubly_linked(listint_t *head)
-{
-	listint_t *v = NULL;
-
-	if (head != NULL && head->next != NULL)
-	{
-		head->previous = NULL;
-		v = head;
-		while (v->next != NULL)
-		{
-			v->next->previous = v;
-			v = v->next;
-		}
-	}
-	return (v);
-}
 /**
  * _is_palindrome - recursively check if listint_t is palindrome
  * @first: first node
@@ -48,8 +26,6 @@ static int _is_palindrome(listint_t *first, listint_t **last)
  */
 int is_palindrome(listint_t **head)
 {
-	listint_t *first, *last;
-
 	if (*head == NULL)
 		return (1);
 	if ((*head)->next == NULL)
