@@ -46,7 +46,7 @@ void print_python_bytes(PyObject *p)
 			end = 10;
 		else
 			end = size + 1;
-		printf("  first 10 bytes: ", end);
+		printf("  first %lu bytes: ", end);
 		for (index = 0; index < end; index++)
 		{
 			if (index < end - 1)
