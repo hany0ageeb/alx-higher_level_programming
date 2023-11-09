@@ -43,7 +43,7 @@ void print_python_bytes(PyObject *p)
 			end = 10;
 		else
 			end = size + 1;
-		printf("first %lu bytes: ", end);
+		printf("  first %lu bytes: ", end);
 		for (index = 0; index < end; index++)
 		{
 			printf("%x ", bytes_obj->ob_sval[index]);
