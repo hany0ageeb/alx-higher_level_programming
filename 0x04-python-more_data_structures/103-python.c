@@ -50,9 +50,9 @@ void print_python_bytes(PyObject *p)
 		for (index = 0; index < end; index++)
 		{
 			if (index < end - 1)
-				printf("%x ", bytes_obj->ob_sval[index]);
+				printf("%02x ", bytes_obj->ob_sval[index]);
 			else
-				printf("%x\n", bytes_obj->ob_sval[index]);
+				printf("%02x\n", bytes_obj->ob_sval[index]);
 		}
 	}
 	else
