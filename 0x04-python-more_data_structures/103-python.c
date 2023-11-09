@@ -40,18 +40,20 @@ void print_python_bytes(PyObject *p)
 	if (PyBytes_CheckExact(p))
 	{
 		size = PyBytes_Size(p);
-		printf(" size: %lu\n", size);
-		printf(" trying string: %s\n", bytes_obj->ob_sval);
+		printf("  size: %lu\n", size);
+		printf("  trying string: %s\n", bytes_obj->ob_sval);
 		if (size > 10)
 			end = 10;
 		else
 			end = size + 1;
-		printf(" first %lu bytes: ", end);
+		printf("  first 10 bytes: ", end);
 		for (index = 0; index < end; index++)
 		{
-			printf("%x ", bytes_obj->ob_sval[index]);
+			if (index < end - 1)
+				printf("%x ", bytes_obj->ob_sval[index]);
+			else
+				printf("%x\n", bytes_obj->ob_sval[index]);
 		}
-		printf("\n");
 	}
 	else
 	{
