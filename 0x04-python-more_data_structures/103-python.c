@@ -1,5 +1,6 @@
 #define PY_SSIZE_T_CLEAN
 #include <Python.h>
+void print_python_bytes(PyObject *p);
 /**
  * print_python_list - print python list
  * @p: python object
@@ -21,6 +22,8 @@ void print_python_list(PyObject *p)
 		{
 			item = list->ob_item[index];
 			printf("Element %lu: %s\n", index, item->ob_type->tp_name);
+			if (strcmp(item->ob_type->tp_name, "bytes") == 0)
+				print_python_bytes(item);
 		}
 	}
 }
