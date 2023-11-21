@@ -42,7 +42,7 @@ class Square:
                 TypeError: if type(value) is not int
                 ValueError: if value < 0
         """
-        if type(value) != int:
+        if type(value) is not int:
             raise TypeError('size must be an integer')
         if value < 0:
             raise ValueError('ize must be >= 0')
@@ -68,9 +68,11 @@ class Square:
                 with length not 2 or a tuple that contains
                 non positive int value (should be int >=0)
         """
-        if type(value) != tuple:
+        if type(value) is not tuple:
             raise TypeError('position must be a tuple of 2 positive integers')
-        if len(value) != 2 or type(value[0]) != int or type(value[1]) != int:
+        if len(value) != 2:
+            raise TypeError('position must be a tuple of 2 positive integers')
+        if type(value[0]) is not int or type(value[1]) is not int:
             raise TypeError('position must be a tuple of 2 positive integers')
         if value[0] < 0 or value[1] < 0:
             raise TypeError('position must be a tuple of 2 positive integers')
@@ -87,10 +89,6 @@ class Square:
     def my_print(self) -> None:
         """
            print Square to stdout using # and spaces
-           Args:
-            None
-           Returns:
-            None
         """
         for y in range(self.__position[1]):
             print()
