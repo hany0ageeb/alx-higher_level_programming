@@ -1,15 +1,47 @@
 #!/usr/bin/python3
+"""
+    This Module defines a Square class
+"""
+
+
 class Square:
+    """
+        Square class
+        Attributes:
+            size(int): square size >= 0
+            position((int, int)): square positon(x, y)
+        Args:
+            size(int): square size default 0 should be >= 0
+            position((int, int)): square position default (0, 0)
+        Raises:
+            TypeError: if type of size is not intgere
+            ValueError: if size < 0
+            TypeError: if position is not a tuple or if  length not 2
+                        or contains non positive int values
+    """
     def __init__(self, size: int = 0, position: (int, int) = (0, 0)):
         self.size = size
         self.position = position
 
     @property
     def size(self) -> int:
+        """
+            get Square size
+            Returns:
+                int: ths size of square
+        """
         return self.__size
 
     @size.setter
     def size(self, value: int) -> None:
+        """
+            set square size
+            Args:
+                value(int): the new size value (>=0)
+            Raises:
+                TypeError: if type(value) is not int
+                ValueError: if value < 0
+        """
         if type(value) != int:
             raise TypeError('size must be an integer')
         if value < 0:
@@ -18,10 +50,24 @@ class Square:
 
     @property
     def position(self):
+        """
+            get square position
+            Returns:
+                (int, int): the square position as tuple(int, int)
+        """
         return self.__position
 
     @position.setter
     def position(self, value: (int, int)) -> None:
+        """
+            set square position
+            Args:
+                value(int, int): a tuple of len 2 containing ints >= 0
+            Raises:
+                TypeError: if value is not a tuple or value is a tuple
+                with length not 2 or a tuple that contains
+                non positive int value (should be int >=0)
+        """
         if type(value) != tuple:
             raise TypeError('position must be a tuple of 2 positive integers')
         if len(value) != 2 or type(value[0]) != int or type(value[1]) != int:
@@ -31,9 +77,17 @@ class Square:
         self.__position = value
 
     def area(self) -> int:
+        """
+            calculates the square area
+            Returns:
+                (int): size * size
+        """
         return self.__size * self.__size
 
     def my_print(self) -> None:
+        """
+           print Square to stdout using # and spaces
+        """
         for y in range(self.__position[1]):
             print()
         for i in range(self.__size):
