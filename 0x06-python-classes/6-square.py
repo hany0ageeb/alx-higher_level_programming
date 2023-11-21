@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-    This Module defines a Square class
+    This Module defines a Square class with size and position
 """
 
 
@@ -87,6 +87,10 @@ class Square:
     def my_print(self) -> None:
         """
            print Square to stdout using # and spaces
+           Args:
+            None
+           Returns:
+            None
         """
         for y in range(self.__position[1]):
             print()
