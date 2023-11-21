@@ -19,12 +19,12 @@ class Square:
             TypeError: if position is not a tuple or if  length not 2
                         or contains non positive int values
     """
-    def __init__(self, size: int = 0, position: (int, int) = (0, 0)):
+    def __init__(self, size=0, position=(0, 0)):
         self.size = size
         self.position = position
 
     @property
-    def size(self) -> int:
+    def size(self):
         """
             get Square size
             Args:
@@ -38,7 +38,7 @@ class Square:
         return self.__size
 
     @size.setter
-    def size(self, value: int) -> None:
+    def size(self, value):
         if type(value) is not int:
             raise TypeError('size must be an integer')
         if value < 0:
@@ -60,7 +60,7 @@ class Square:
         return self.__position
 
     @position.setter
-    def position(self, value: (int, int)) -> None:
+    def position(self, value):
         if type(value) is not tuple:
             raise TypeError('position must be a tuple of 2 positive integers')
         if len(value) != 2:
@@ -71,7 +71,7 @@ class Square:
             raise TypeError('position must be a tuple of 2 positive integers')
         self.__position = value
 
-    def area(self) -> int:
+    def area(self):
         """
             calculates the square area
             Returns:
@@ -79,9 +79,10 @@ class Square:
         """
         return self.__size * self.__size
 
-    def my_print(self) -> None:
+    def my_print(self):
         """
            print Square to stdout using # and spaces
+           print as ####
         """
         for y in range(self.__position[1]):
             print()
