@@ -1,6 +1,9 @@
 #!/usr/bin/python3
 
-"""This is 0-add_integer module with function add_integer(a, b), for example
+"""
+This is 0-add_integer module with function add_integer(a, b), for example
+>>> add_integer(1, 2)
+3
 """
 
 
