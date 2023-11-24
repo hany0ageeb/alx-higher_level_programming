@@ -1,0 +1,26 @@
+>>> text_indentation = __import__('5-text_indentation').text_indentation
+>>> text_indentation(1.25)
+Traceback (most recent call last):
+	...
+TypeError: text must be a string
+>>> text_indentation("hello.world?hello:world.")
+hello.
+<BLANKLINE>
+world?
+<BLANKLINE>
+hello:
+<BLANKLINE>
+world.
+<BLANKLINE>
+>>> text_indentation("Quonam modo? Utrum igitur tibi litteram videor an totas paginas commovere?")
+Quonam modo?
+<BLANKLINE>
+ Utrum igitur tibi litteram videor an totas paginas commovere?
+<BLANKLINE>
+>>> text_indentation("Hello World")
+Hello World
+>>> text_indentation("")
+>>> text_indentation("One.Two")
+One.
+<BLANKLINE>
+Two
