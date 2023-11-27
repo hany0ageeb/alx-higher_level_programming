@@ -80,6 +80,8 @@ class Rectangle:
             str: nice represenation of object rectangle
         """
         value = ""
+        if self.__width == 0 or self.__height == 0:
+            return value
         for row in range(self.__height):
             for column in range(self.__width):
                 value += "#"
