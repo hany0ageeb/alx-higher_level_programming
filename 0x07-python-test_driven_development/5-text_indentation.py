@@ -5,7 +5,6 @@ Module 5-text_indentation which contains func text_indentation(text)
 """
 
 
-
 def text_indentation(text):
     """
     a function that prints a text with 2 new lines after
