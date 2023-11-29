@@ -13,6 +13,8 @@ class TestMaxInteger(unittest.TestCase):
         """
         tests max_integer edge cases
         """
+        self.assertEqual(max_integer([5]), 5)
+        self.assertEqual(max_integer([1, 3, 2]), 3)
         self.assertIsNone(max_integer([]))
         with self.assertRaises(TypeError):
             result = max_integer([1, 2, 3, 'a'])
