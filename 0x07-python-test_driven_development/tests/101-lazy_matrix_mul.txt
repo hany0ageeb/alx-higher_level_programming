@@ -4,48 +4,42 @@ array([[13, 16]])
 >>> lazy_matrix_mul(None, None)
 Traceback (most recent call last):
 	...
-101-lazy_matrix_mul.InvalidTypeError: Scalar operands are not allowed, use '*' instead
+TypeError: unsupported operand type(s) for *: 'NoneType' and 'NoneType'
 >>> lazy_matrix_mul([], None)
-Traceback (most recent call last):
-	...
-101-lazy_matrix_mul.InvalidTypeError: m_b should be a list
+array([], dtype=object)
 >>> lazy_matrix_mul([[1, 2], 'a'], [])
 Traceback (most recent call last):
 	...
-101-lazy_matrix_mul.InvalidTypeError: m_a is not a list of lists(matrix)
+ValueError: setting an array element with a sequence
 >>> lazy_matrix_mul([[1, 2], [1, 2]], [[1,2], 1])
 Traceback (most recent call last):
 	...
-101-lazy_matrix_mul.InvalidTypeError: m_b is not a list of lists(matrix)
+ValueError: setting an array element with a sequence.
 >>> lazy_matrix_mul([], [])
-Traceback (most recent call last):
-	...
-101-lazy_matrix_mul.EmptyListError: m_a cannot be an empty list ([] or [[]])
+False
 >>> lazy_matrix_mul([[]], [])
-Traceback (most recent call last):
-	...
-101-lazy_matrix_mul.EmptyListError: m_a cannot be an empty list ([] or [[]])
+array([False])
 >>> lazy_matrix_mul([[1,2], [1]], [])
 Traceback (most recent call last):
 	...
-101-lazy_matrix_mul.EmptyListError: m_b cannot be an empty list ([] or [[]])
+ValueError: setting an array element with a sequence.
 >>> lazy_matrix_mul([[1,2], [1]], [[]])
 Traceback (most recent call last):
         ...
-101-lazy_matrix_mul.EmptyListError: m_b cannot be an empty list ([] or [[]])
+ValueError: setting an array element with a sequence.
 >>> lazy_matrix_mul([[1, 'a'], [1.5]], [[1, 2], [1, 2]])
 Traceback (most recent call last):
 	...
-101-lazy_matrix_mul.InvalidTypeError: m_a should be a list of lists containing only floats or ints
+ValueError: setting an array element with a sequence
 >>> lazy_matrix_mul([[1, 2], [1]], [[1.5, 'a'], [1, 2]])
 Traceback (most recent call last):
 	...
-101-lazy_matrix_mul.InvalidTypeError: m_b should be a list of lists containing only floats or ints
+ValueError: setting an array element with a sequence
 >>> lazy_matrix_mul([[1, 2], [1]], [[1, 2], [1]])
 Traceback (most recent call last):
 	...
-101-lazy_matrix_mul.NotRectangleListError: m_a must be a rectangle matrix
+ValueError: setting an array element with a sequence.
 >>> lazy_matrix_mul([[1, 2], [1, 2]], [[1, 2], [1]])
 Traceback (most recent call last):
 	...
-101-lazy_matrix_mul.NotRectangleListError: m_b must be a rectangle matrix
+ValueError: setting an array element with a sequence.
