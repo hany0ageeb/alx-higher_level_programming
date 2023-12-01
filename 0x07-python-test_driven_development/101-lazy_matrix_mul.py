@@ -41,7 +41,7 @@ def lazy_matrix_mul(m_a, m_b):
     m_a_has_diff_row_len = False
     m_b_has_diff_row_len = False
     if type(m_a) is not list:
-        raise InvalidTypeError('m_a should be a list')
+        raise InvalidTypeError("Scalar operands are not allowed, use '*' instead")
     if type(m_b) is not list:
         raise InvalidTypeError('m_b should be a list')
     for row in m_a:

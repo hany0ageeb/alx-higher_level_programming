@@ -4,7 +4,7 @@ array([[13, 16]])
 >>> lazy_matrix_mul(None, None)
 Traceback (most recent call last):
 	...
-101-lazy_matrix_mul.InvalidTypeError: m_a should be a list
+101-lazy_matrix_mul.InvalidTypeError: Scalar operands are not allowed, use '*' instead
 >>> lazy_matrix_mul([], None)
 Traceback (most recent call last):
 	...
