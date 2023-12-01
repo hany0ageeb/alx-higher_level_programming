@@ -11,10 +11,6 @@ def add_integer(a, b=98):
     """
     adds 2 integer
     """
-    if a != a:
-        raise TypeError('a must be an integer')
-    if b != b:
-        raise TypeError('b must be an integer')
     if a is None or type(a) not in (float, int):
         raise TypeError('a must be an integer')
     if type(b) not in (float, int):
