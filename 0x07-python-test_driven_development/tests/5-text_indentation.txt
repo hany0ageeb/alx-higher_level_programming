@@ -15,7 +15,7 @@ world.
 >>> text_indentation("Quonam modo? Utrum igitur tibi litteram videor an totas paginas commovere?")
 Quonam modo?
 <BLANKLINE>
- Utrum igitur tibi litteram videor an totas paginas commovere?
+Utrum igitur tibi litteram videor an totas paginas commovere?
 <BLANKLINE>
 >>> text_indentation("Hello World")
 Hello World
