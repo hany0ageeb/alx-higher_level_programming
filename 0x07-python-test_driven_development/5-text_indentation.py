@@ -6,11 +6,11 @@ Module 5-text_indentation which contains func text_indentation(text)
 
 
 def text_indentation(text):
-    line_begin = True
     """
     a function that prints a text with 2 new lines after
     each of these characters: ., ? and :
     """
+    line_begin = True
     if type(text) is not str:
         raise TypeError('text must be a string')
     for ch in text:
