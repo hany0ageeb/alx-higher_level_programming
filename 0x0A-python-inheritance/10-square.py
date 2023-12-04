@@ -12,3 +12,7 @@ class Square(Rectangle):
             size(int): square size must be int > 0
         """
         super().__init__(size, size)
+
+    def area(self):
+        """calculate square area"""
+        return super().area()
