@@ -25,3 +25,7 @@ ValueError: pla must be greater than 0
 Traceback (most recent call last):
 	...
 TypeError: integer_validator() missing 1 required positional argument: 'value'
+>>> bg.integer_validator("pla", float('inf'))
+Traceback (most recent call last):
+	...
+TypeError: pla must be an integer
