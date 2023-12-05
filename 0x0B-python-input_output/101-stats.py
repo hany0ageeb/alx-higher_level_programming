@@ -21,14 +21,14 @@ class Metrics:
         if len(parts) >= 9:
             file_size = parts[8]
             status = parts[7]
-            if file_size[len(file_size) - 1] == "\n":
-                self.total_file_size += int(file_size[:-1])
-            else:
-                self.total_file_size += int(file_size)
-            if status in self.status_codes:
-                self.status_codes[status] += 1
-            else:
-                self.status_codes[status] = 1
+        if file_size[len(file_size) - 1] == "\n":
+            self.total_file_size += int(file_size[:-1])
+        else:
+            self.total_file_size += int(file_size)
+        if status in self.status_codes:
+            self.status_codes[status] += 1
+        else:
+            self.status_codes[status] = 1
 
     def print_metrics(self):
         """print metrices with specified format"""
@@ -40,7 +40,7 @@ class Metrics:
 def main():
     """script entry point"""
     import sys
-    line_counter = 1
+    line_counter = 0
     m = Metrics()
     try:
         for line in sys.stdin:
