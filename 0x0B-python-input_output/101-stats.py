@@ -32,9 +32,10 @@ class Metrics:
 
     def print_metrics(self):
         """print metrices with specified format"""
-        print("File size: {:d}".format(self.total_file_size))
+        msg = "File size: {:d}\n".format(self.total_file_size)
         for key, value in sorted(self.status_codes.items()):
-            print("{}: {:d}".format(key, value))
+            msg += "{}: {:d}\n".format(key, value)
+        print(msg, end='')
 
 
 def main():
