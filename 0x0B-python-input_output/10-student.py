@@ -1,4 +1,4 @@
-#!/usr/student/python3
+#!/usr/bin/python3
 """This module defines a single class: Student"""
 
 
