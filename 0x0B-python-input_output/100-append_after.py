@@ -9,11 +9,11 @@ def append_after(filename="", search_string="", new_string=""):
     """
     if search_string == "" or new_string == "":
         return
-    with open(filename, "r") as f:
-        lines = f.readlines()
-    for index, line in enumerate(lines):
-        if search_string in line:
-            lines.insert(index + 1, new_string)
-    with open(filename, "w") as f:
-        for line in lines:
-            f.write(line)
+    with open(filename, "r") as fin, open("tmp", "w") as fout:
+        for line in fin:
+            fout.write(line)
+            if search_string in line:
+                fout.write(new_string)
+    with open(filename, "w") as fout, open("tmp", "r") as fin:
+        for line in fin:
+            fout.write(line)
