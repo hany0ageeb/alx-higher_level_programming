@@ -25,10 +25,7 @@ class Metrics:
             self.total_file_size += int(file_size[:-1])
         else:
             self.total_file_size += int(file_size)
-        if status in self.status_codes:
-            self.status_codes[status] += 1
-        else:
-            self.status_codes[status] = 1
+        self.status_codes[status] = self.status_codes.get(status, 0) + 1
 
     def print_metrics(self):
         """print metrices with specified format"""
@@ -49,7 +46,7 @@ def main():
             line_counter += 1
             if line_counter % 10 == 0:
                 m.print_metrics()
-    except KeyboardInterrupt:
+    except KeyboardInterrupt as e:
         m.print_metrics()
         raise
 
