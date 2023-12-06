@@ -16,24 +16,45 @@ class Metrics:
 
     def log_line(self, line):
         """compute and update metrices"""
-        if type(line) is not str:
-            return
-        parts = line.split(' ')
-        if len(parts) == 9:
-            file_size = parts[8]
-            status = parts[7]
-        else:
-            return
-        try:
-            if file_size[len(file_size) - 1] == "\n":
-                self.total_file_size += int(file_size[:-1])
-            else:
-                self.total_file_size += int(file_size)
-        except ValueError:
-            pass
+        status, file_size = Metrics.parse_line(line)
+        self.total_file_size += file_size
         if status in ('200', '301', '400', '401', '403', '404', '405', '500'):
             self.status_codes[status] = self.status_codes.get(status, 0) + 1
         self.is_printed = False
+
+    @staticmethod
+    def parse_line(line: str):
+        """parse line"""
+        if type(line) is not str or line == "":
+            return ('', 0)
+        if line[len(line) - 1] == '\n':
+            start = len(line) - 2
+        else:
+            start = len(line) - 1
+        current = start
+        file_size = 0
+        status_code = ''
+        while current >= 0:
+            while current >= 0 and line[current] != ' ':
+                current -= 1
+            try:
+                if current > 0:
+                    file_size = int(line[current + 1:start + 1])
+                else:
+                    file_size = int(line[current:start + 1])
+            except ValueError:
+                file_size = 0
+            start = current - 1
+            current -= 1
+            while current >= 0 and line[current] != ' ':
+                current -= 1
+            if current < 0:
+                return ('', file_size)
+            elif current == 0:
+                status_code = line[current:start + 1]
+            else:
+                status_code = line[current + 1:start + 1]
+            return (status_code, file_size)
 
     def print_metrics(self):
         """print metrices with specified format"""
