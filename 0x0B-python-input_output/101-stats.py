@@ -12,7 +12,7 @@ class Metrics:
     def __init__(self):
         self.total_file_size = 0
         self.status_codes = {}
-        self.is_printed = True
+        self.is_printed = False
 
     def log_line(self, line):
         """compute and update metrices"""
@@ -22,6 +22,8 @@ class Metrics:
         if len(parts) >= 9:
             file_size = parts[8]
             status = parts[7]
+        else:
+            return
         if file_size[len(file_size) - 1] == "\n":
             self.total_file_size += int(file_size[:-1])
         else:
