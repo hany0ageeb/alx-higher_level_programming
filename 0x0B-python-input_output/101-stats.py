@@ -24,10 +24,13 @@ class Metrics:
             status = parts[7]
         else:
             return
-        if file_size[len(file_size) - 1] == "\n":
-            self.total_file_size += int(file_size[:-1])
-        else:
-            self.total_file_size += int(file_size)
+        try:
+            if file_size[len(file_size) - 1] == "\n":
+                self.total_file_size += int(file_size[:-1])
+            else:
+                self.total_file_size += int(file_size)
+        except ValueError:
+            pass
         self.status_codes[status] = self.status_codes.get(status, 0) + 1
         self.is_printed = False
 
