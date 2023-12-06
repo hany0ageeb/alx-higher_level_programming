@@ -31,7 +31,8 @@ class Metrics:
                 self.total_file_size += int(file_size)
         except ValueError:
             pass
-        self.status_codes[status] = self.status_codes.get(status, 0) + 1
+        if status in ('200', '301', '400', '401', '403', '404', '405', '500'):
+            self.status_codes[status] = self.status_codes.get(status, 0) + 1
         self.is_printed = False
 
     def print_metrics(self):
