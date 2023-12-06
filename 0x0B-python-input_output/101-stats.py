@@ -19,7 +19,7 @@ class Metrics:
         if type(line) is not str:
             return
         parts = line.split(' ')
-        if len(parts) >= 9:
+        if len(parts) == 9:
             file_size = parts[8]
             status = parts[7]
         else:
