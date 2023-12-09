@@ -117,17 +117,20 @@ class Rectangle(Base):
         return "[Rectangle] ({}) {}/{} - {}/{}".format(
                 self.id, self.x, self.y, self.width, self.height)
 
+    def to_str(self):
+        """return str to display rectangle on stdout"""
+        reper = ""
+        reper += self.y * "\n"
+        for row in range(self.height):
+            reper += self.x * " " + self.width * "#"
+            if row < (self.height - 1):
+                reper += "\n"
+        return reper
+
     def display(self):
         """print in stdout the Rectangle instance with the character #
         """
-        for i in range(self.y):
-            print()
-        for row in range(self.height):
-            for j in range(self.x):
-                print(' ', end='')
-            for col in range(self.width):
-                print('#', end='')
-            print()
+        print(self.to_str())
 
     def to_dictionary(self):
         """ returns the dictionary representation of a Rectangle"""
