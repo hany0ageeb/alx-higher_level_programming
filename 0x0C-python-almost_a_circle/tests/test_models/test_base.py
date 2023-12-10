@@ -1,4 +1,5 @@
-#!/usr/bin/python3
+#!/usr/bin/piython3
+# -*- coding: utf-8 -*-
 """This module contains test class for Base"""
 
 
@@ -6,6 +7,7 @@ import unittest
 from models.base import Base
 from models.rectangle import Rectangle
 from unittest.mock import patch
+from unittest.mock import mock_open
 
 
 class TestBase(unittest.TestCase):
@@ -28,3 +30,8 @@ class TestBase(unittest.TestCase):
         dictionary = r1.to_dictionary()
         self.assertEqual(Base.to_json_string([r1.to_dictionary()]),
                 '[{"id": 1, "width": 10, "height": 7, "x": 2, "y": 8}]')
+
+    def test_save_to_file(self):
+        """test save_to_file method"""
+        pass
+
