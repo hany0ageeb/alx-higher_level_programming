@@ -7,6 +7,7 @@ from models.rectangle import Rectangle
 
 
 class TestRectangle(unittest.TestCase):
+    """class TestRectangle"""
     def test_width_exist(self):
         """test if rectangle class has width property"""
         r = Rectangle(1, 2)
@@ -23,7 +24,8 @@ class TestRectangle(unittest.TestCase):
             r = Rectangle("1", 2)
 
     def test_width_type_error_message(self):
-        """test width type error message should be 'width must be an integer'"""
+        """test width type error message should
+        be 'width must be an integer'"""
         with self.assertRaises(TypeError) as cm:
             r = Rectangle("1", 2)
         self.assertEqual(str(cm.exception), 'width must be an integer')
@@ -32,10 +34,12 @@ class TestRectangle(unittest.TestCase):
         """test if width raises ValueError if given a value of zero"""
         with self.assertRaises(ValueError) as cm:
             r = Rectangle(0, 2)
+
     def test_width_value_error_message(self):
-        """test width should raise value error with message 'width must be > 0'"""
+        """test width should raise value error
+        with message 'width must be > 0'"""
         with self.assertRaises(ValueError) as cm:
-            r= Rectangle(0, 2)
+            r = Rectangle(0, 2)
         self.assertEqual(str(cm.exception), 'width must be > 0')
 
     def test_width_should_raise_type_error_if_passed_float(self):
@@ -148,7 +152,7 @@ class TestRectangle(unittest.TestCase):
         """test Rectangle __str__ method return correct value"""
         r1 = Rectangle(4, 6, 2, 1, 12)
         self.assertEqual(str(r1), "[Rectangle] (12) 2/1 - 4/6")
-        r1 = Rectangle(5, 5, 1)
+        r1 = Rectangle(5, 5, 1, 0, 1)
         self.assertEqual(str(r1), "[Rectangle] (1) 1/0 - 5/5")
 
     def test_update_args(self):
@@ -156,19 +160,19 @@ class TestRectangle(unittest.TestCase):
         r1 = Rectangle(10, 10, 10, 10)
         r1.update(89)
         self.assertEqual((r1.id, r1.width, r1.height, r1.x, r1.y),
-                (89, 10, 10, 10, 10))
+                         (89, 10, 10, 10, 10))
         r1.update(88, 5)
         self.assertEqual((r1.id, r1.width, r1.height, r1.x, r1.y),
-                (88, 5, 10, 10, 10))
+                         (88, 5, 10, 10, 10))
         r1.update(87, 5, 6)
         self.assertEqual((r1.id, r1.width, r1.height, r1.x, r1.y),
-                (87, 5, 6, 10, 10))
+                         (87, 5, 6, 10, 10))
         r1.update(85, 2, 7, 0)
         self.assertEqual((r1.id, r1.width, r1.height, r1.x, r1.y),
-                (85, 2, 7, 0, 10))
+                         (85, 2, 7, 0, 10))
         r1.update(80, 1, 2, 3, 4)
         self.assertEqual((r1.id, r1.width, r1.height, r1.x, r1.y),
-                (80, 1, 2, 3, 4))
+                         (80, 1, 2, 3, 4))
         with self.assertRaises(TypeError) as cm:
             r1.update(8, '1')
         self.assertEqual(str(cm.exception), 'width must be an integer')
@@ -184,5 +188,24 @@ class TestRectangle(unittest.TestCase):
 
     def test_update_kwargs(self):
         """test rectangle update method"""
-        pass
+        r1 = Rectangle(10, 10, 10, 10, 10)
+        r1.update(5, id=1)
+        self.assertEqual((r1.id, r1.width, r1.height, r1.x, r1.y),
+                         (5, 10, 10, 10, 10))
+        r1.update(id=2)
+        self.assertEqual((r1.id, r1.width, r1.height, r1.x, r1.y),
+                         (2, 10, 10, 10, 10))
+        r1.update(pla=1, id=50)
+        self.assertEqual(r1.id, 50)
+        self.assertFalse(hasattr(r1, 'pla'))
+        self.assertEqual(r1.id, 50)
+        r1 = Rectangle(10, 10, 10, 10, 1)
+        r1.update(width=20, height=30, id=50)
+        self.assertEqual((r1.id, r1.width, r1.height, r1.x, r1.y),
+                         (50, 20, 30, 10, 10))
 
+    def test_to_dictionary(self):
+        """test rectangle to dictionary method"""
+        r1 = Rectangle(10, 2, 1, 9, 1)
+        self.assertEqual(r1.to_dictionary(),
+                         {'id': 1, 'width': 10, 'height': 2, 'x': 1, 'y': 9})
