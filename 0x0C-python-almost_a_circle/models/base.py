@@ -23,6 +23,14 @@ class Base:
         else:
             self.id = id
 
+    def update(self, *args, **kwargs):
+        if args:
+            self.id = args[0]
+        else:
+            for key, value in kwargs.items():
+                if key == 'id':
+                    self.id = value
+
     @staticmethod
     def to_json_string(list_dictionaries):
         """returns the JSON string representation of list_dictionaries
@@ -60,7 +68,7 @@ class Base:
     @classmethod
     def create(cls, **dictionary):
         """returns an instance with all attributes already set"""
-        if issubclass(cls, Base) and cls is not Base:
+        if issubclass(cls, Base):
             dummy = cls(1, 1)
             dummy.update(**dictionary)
             return dummy

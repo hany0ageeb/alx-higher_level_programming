@@ -24,7 +24,8 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(s1.size, 3)
 
     def test_square_size_set_width_and_height(self):
-        """test square size set inherited width and height values from rectangel"""
+        """test square size set inherited width and
+        height values from rectangel"""
         s1 = Square(3, 1, 2)
         self.assertEqual(s1.width, 3)
         self.assertEqual(s1.height, 3)
@@ -67,4 +68,5 @@ class TestSquare(unittest.TestCase):
     def test_to_dictionary(self):
         """test square to_dictionary method"""
         s1 = Square(3, 1, 2, 1)
-        self.assertEqual(s1.to_dictionary(), {'id': 1, 'size': 3, 'x': 1, 'y': 2})
+        expected_result = {'id': 1, 'size': 3, 'x': 1, 'y': 2}
+        self.assertEqual(s1.to_dictionary(), expected_result)
