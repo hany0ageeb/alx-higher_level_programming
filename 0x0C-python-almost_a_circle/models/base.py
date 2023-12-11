@@ -60,9 +60,10 @@ class Base:
     @classmethod
     def create(cls, **dictionary):
         """returns an instance with all attributes already set"""
-        dummy = cls(1, 1)
-        dummy.update(**dictionary)
-        return dummy
+        if issubclass(cls, Base):
+            dummy = cls(1, 1)
+            dummy.update(**dictionary)
+            return dummy
 
     @classmethod
     def load_from_file(cls):
