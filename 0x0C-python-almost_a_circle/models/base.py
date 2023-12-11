@@ -69,10 +69,14 @@ class Base:
     @classmethod
     def create(cls, **dictionary):
         """returns an instance with all attributes already set"""
-        if issubclass(cls, Base):
+        from models.square import Square
+        from models.rectangle import Rectangle
+        if cls is Rectangle:
             dummy = cls(1, 1)
-            dummy.update(**dictionary)
-            return dummy
+        elif cls is Square:
+            dummy = cls(1)
+        dummy.update(**dictionary)
+        return dummy
 
     @classmethod
     def load_from_file(cls):
