@@ -29,7 +29,8 @@ class TestBase(unittest.TestCase):
         r1 = Rectangle(10, 7, 2, 8, 1)
         dictionary = r1.to_dictionary()
         expected_rslt = '[{"id": 1, "width": 10, "height": 7, "x": 2, "y": 8}]'
-        self.assertEqual(Base.to_json_string([r1.to_dictionary()]), rslt)
+        self.assertEqual(Base.to_json_string([r1.to_dictionary()]),
+                         expected_rslt)
 
     def test_save_to_file(self):
         """test save_to_file method"""
