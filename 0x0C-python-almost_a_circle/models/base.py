@@ -24,6 +24,7 @@ class Base:
             self.id = id
 
     def update(self, *args, **kwargs):
+        """update method of Base"""
         if args:
             self.id = args[0]
         else:
