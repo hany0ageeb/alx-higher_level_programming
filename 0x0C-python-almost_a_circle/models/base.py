@@ -17,7 +17,7 @@ class Base:
     __nb_objects = 0
 
     def __init__(self, id=None):
-        if id is None:
+        if id is None or type(id) is not int:
             Base.__nb_objects += 1
             self.id = Base.__nb_objects
         else:
@@ -60,9 +60,10 @@ class Base:
     @classmethod
     def create(cls, **dictionary):
         """returns an instance with all attributes already set"""
-        dummy = cls(1, 1)
-        dummy.update(**dictionary)
-        return dummy
+        if issubclass(cls, Base) and cls is not Base:
+            dummy = cls(1, 1)
+            dummy.update(**dictionary)
+            return dummy
 
     @classmethod
     def load_from_file(cls):
