@@ -35,3 +35,22 @@ class TestBase(unittest.TestCase):
         """test save_to_file method"""
         pass
 
+    def test_from_json_string(self):
+        """test from_json_string method"""
+        pass
+
+    def test_create(self):
+        """test create method"""
+        pass
+
+    def test_load_from_file(self):
+        """test load_from_file"""
+        pass
+    def test_create(self):
+        """test create class method"""
+        r1 = Rectangle(3, 5, 1)
+        r1_dict = r1.to_dictionary()
+        r2 = Rectangle.create(**r1_dict)
+        self.assertEqual(str(r1), str(r2))
+        self.assertTrue(r1 != r2)
+
