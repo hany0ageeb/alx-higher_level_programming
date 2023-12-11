@@ -42,12 +42,12 @@ class Base:
         """class method that writes the JSON string representation
         of list_objs to a file"""
         list_dict = []
-        with open(f'{cls.__name__}.json', 'w', encoding='utf-8') as f:
-            if list_objs is not None:
-                for obj in list_objs:
-                    if issubclass(cls, Base):
-                        list_dict.append(obj.to_dictionary())
-                json.dump(list_dict, f)
+        if list_objs is not None:
+            for obj in list_objs:
+                if issubclass(cls, Base):
+                    list_dict.append(obj.to_dictionary())
+        with open(f'{cls.__name__}.json', 'w') as f:
+            f.write(Base.to_json_string(list_dict))
 
     @staticmethod
     def from_json_string(json_string):
