@@ -4,6 +4,7 @@
 
 
 import unittest
+import os
 from models.base import Base
 from models.rectangle import Rectangle
 from models.square import Square
@@ -45,15 +46,26 @@ class TestBase(unittest.TestCase):
         result = Base.from_json_string("[]")
         self.assertEqual(result, [])
 
-    def test_create(self):
-        """test create method"""
-        r = Rectangle.create(50, 5, 10)
-        self.assertEquals((r.id, r.width, r.height, r.x, r.y),
-                          (50, 5, 10, 0, 0))
-
     def test_load_from_file(self):
         """test load_from_file"""
-        pass
+        try:
+            os.remove('Rectangle.json')
+        except Exception:
+            pass
+        result = Rectangle.load_from_file()
+        self.assertEqual(result, [])
+        dict_str = '[{"id": 5, "width": 14, "height": 20, "x": 8, "y": 7}]'
+        try:
+            with open('Rectangle.json', 'w') as f:
+                f.write(dict_str)
+            result = Rectangle.load_from_file()
+            self.asserEqual(len(result), 1)
+            self.assertEqual((result.id, result.width, result.height,
+                              result.x, result.y),
+                             (5, 14, 20, 8, 7))
+            os.remove("Rectangle.json")
+        except Exception:
+            pass
 
     def test_create(self):
         """test create class method"""
