@@ -59,7 +59,7 @@ class TestBase(unittest.TestCase):
             with open('Rectangle.json', 'w') as f:
                 f.write(dict_str)
             result = Rectangle.load_from_file()
-            self.asserEqual(len(result), 1)
+            self.assertEqual(len(result), 1)
             self.assertEqual((result.id, result.width, result.height,
                               result.x, result.y),
                              (5, 14, 20, 8, 7))
