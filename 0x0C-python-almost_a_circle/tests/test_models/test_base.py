@@ -47,7 +47,9 @@ class TestBase(unittest.TestCase):
 
     def test_create(self):
         """test create method"""
-        pass
+        r = Rectangle.create(50, 5, 10)
+        self.assertEquals((r.id, r.width, r.height, r.x, r.y),
+                          (50, 5, 10, 0, 0))
 
     def test_load_from_file(self):
         """test load_from_file"""
