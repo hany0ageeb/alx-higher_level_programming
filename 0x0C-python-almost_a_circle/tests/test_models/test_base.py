@@ -38,7 +38,12 @@ class TestBase(unittest.TestCase):
 
     def test_from_json_string(self):
         """test from_json_string method"""
-        pass
+        result = Base.from_json_string(None)
+        self.assertEqual(result, [])
+        result = Base.from_json_string("")
+        self.assertEqual(result, [])
+        result = Base.from_json_string("[]")
+        self.assertEqual(result, [])
 
     def test_create(self):
         """test create method"""
