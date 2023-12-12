@@ -13,6 +13,15 @@ class TestSquare(unittest.TestCase):
         """test class Square inherits Rectangle"""
         self.assertTrue(issubclass(Square, Rectangle))
 
+    def test_square__init__(self):
+        """test __init__ method of Square"""
+        with self.assertRaisesRegex(ValueError, 'width must be > 0'):
+            s = Square(0)
+        with self.assertRaisesRegex(TypeError, 'width must be an integer'):
+            s = Square(None)
+        with self.assertRaisesRegex(TypeError, 'width must be an integer'):
+            s = Square("1")
+
     def test__str__(self):
         """test return value for __str__ method"""
         s1 = Square(3, 1, 3, 1)
