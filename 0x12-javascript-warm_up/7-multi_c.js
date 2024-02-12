@@ -1,6 +1,5 @@
 #!/usr/bin/node
-const { argv } = require('node:process');
-const arg = argv.length > 2 ? argv[2] : undefined;
+const arg = process.argv.length > 2 ? process.argv[2] : undefined;
 const message = 'C is fun';
 if (arg && !Number.isNaN(arg)) {
   let x = parseInt(arg);
