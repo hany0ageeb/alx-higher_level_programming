@@ -6,6 +6,5 @@ function factorial (n) {
     return n * factorial(n - 1);
   }
 }
-const { argv } = require('node:process');
-const n = argv.length > 2 ? parseInt(argv[2]) : Number.NaN;
+const n = process.argv.length > 2 ? parseInt(process.argv[2]) : Number.NaN;
 console.log(factorial(n));
