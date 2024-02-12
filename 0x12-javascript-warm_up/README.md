@@ -1,0 +1,30 @@
+# 0x12. JavaScript - Warm up
+## Background Context
+JavaScript is used for many things. Here, you will use JavaScript for 2 reasons:
+- Scripting (same as we did with Python)
+- Web front-end
+For the moment, and for learning all basic concepts of this language, we will do some scripting. After, we will make our AirBnB project dynamic by using Javascript and JQuery.
+## Resources
+- [Writing JavaScript Code](https://intranet.alxswe.com/rltoken/3HLjEesLsmyWfRUWnxgUGg)
+- [Variables](https://intranet.alxswe.com/rltoken/zgOWmcpVLZFEmFlmuwayyg)
+- [Data Types](https://intranet.alxswe.com/rltoken/VPd6JWaLrwOBzjAeXNAEqg)
+- [Operators](https://intranet.alxswe.com/rltoken/3HLjEesLsmyWfRUWnxgUGg)
+- [Operator Precedence](https://intranet.alxswe.com/rltoken/PHtcJJk30gBNmlFQ9R4RVg)
+- [Controlling Program Flow](https://intranet.alxswe.com/rltoken/tsreKcNh_KmTmLPHsfvJRw)
+- [Functions](https://intranet.alxswe.com/rltoken/e3EfHIxICdIncGBwwIDbXQ)
+- [Objects and Arrays](https://intranet.alxswe.com/rltoken/jg7IbvJpV2oLIKgqOAQH1g)
+- [Intrinsic Objects](https://intranet.alxswe.com/rltoken/jg7IbvJpV2oLIKgqOAQH1g)
+- [Module patterns](https://intranet.alxswe.com/rltoken/g-MgvO09Ur02RhM63gVyXw)
+- [var, let and const](https://intranet.alxswe.com/rltoken/gJi61GeJTRX0g-M0Rx-0Iw)
+- [JavaScript Tutorial](https://intranet.alxswe.com/rltoken/Y8hkOcy5jO22lQGyF6_NiA)
+- [Modern JS](https://intranet.alxswe.com/rltoken/NZawtiBjWUpiojnrtVywNw)
+## Requirements
+### General
+- Allowed editors: vi, vim, emacs
+- All your files will be interpreted on Ubuntu 20.04 LTS using node (version 14.x)
+- All your files should end with a new line
+- The first line of all your files should be exactly #!/usr/bin/node
+- A README.md file, at the root of the folder of the project, is mandatory
+- Your code should be semistandard compliant (version 16.x.x). [Rules of Standard](https://intranet.alxswe.com/rltoken/1T1yg1vOAChRN20Yyz8crw) + [semicolons on top](https://intranet.alxswe.com/rltoken/35q5Pc6A6KWPyd3kGeRQFg). Also as reference: [AirBnB style](https://intranet.alxswe.com/rltoken/ilo9MmB3u0utJZjZat-W3Q)
+- All your files must be executable
+- The length of your files will be tested using wc
