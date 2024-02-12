@@ -1,11 +1,8 @@
 #!/usr/bin/node
-if (process.argv.length <= 3) {
-  console.log(0);
+const nums = process.argv.slice(2).filter((x) => x && !Number.isNaN(x)).map((x) => parseInt(x));
+if (nums.length >= 2) {
+  nums.sort();
+  console.log(nums[nums.length - 2]);
 } else {
-  let nums = process.argv.slice(2);
-  if (nums.length >= 2) {
-    nums = nums.map((x) => parseInt(x));
-    nums.sort();
-    console.log(nums[nums.length - 2]);
-  }
+  console.log('0');
 }
