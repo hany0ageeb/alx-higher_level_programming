@@ -1,5 +1,4 @@
 #!/usr/bin/node
-const { argv } = require('node:process');
-const arg1 = argv.length > 2 ? argv[2] : undefined;
-const arg2 = argv.length > 3 ? argv[3] : undefined;
+const arg1 = process.argv.length > 2 ? process.argv[2] : undefined;
+const arg2 = process.argv.length > 3 ? process.argv[3] : undefined;
 console.log(`${arg1} is ${arg2}`);
