@@ -23,7 +23,7 @@ class Rectangle {
     this.height *= 2;
   }
 
-  getWidth() {
+  getWidth () {
     return this.width;
   }
 }
