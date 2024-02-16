@@ -32,7 +32,7 @@ def main():
             password=PASSWORD)
     qry = """SELECT id, name
     FROM states
-    WHERE name = '{}'
+    WHERE name LIKE BINARY '{}'
     ORDER BY id""".format(STATE_NAME)
     db.query(qry)
     result = db.store_result()
