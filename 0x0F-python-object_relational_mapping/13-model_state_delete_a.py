@@ -13,6 +13,7 @@ containing the letter a from the database
 import sys
 from sqlalchemy import create_engine, delete
 from sqlalchemy.engine import URL
+from sqlalchemy.orm import Session
 from model_state import State, Base
 
 
@@ -28,9 +29,11 @@ def main():
             password=sys.argv[2],
             database=sys.argv[3])
     engine = create_engine(conn_url, echo=False)
-    stmt = delete(State).where(State.name.like('%a%'))
-    with engine.connect() as conn:
-        conn.execute(stmt)
+    with Session(engine) as session:
+        states = session.query(State).filter(State.name.like('%a%')).all()
+        for state in states:
+            session.delete(state)
+        session.commit()
 
 
 if __name__ == '__main__':
