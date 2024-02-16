@@ -12,17 +12,9 @@ script that changes the name of a State object from the database hbtn_0e_6_usa
 """
 import sys
 from model_state import State, Base
-from sqlalchemy import create_engine, update
+from sqlalchemy import create_engine
 from sqlalchemy.engine import URL
-
-
-def update_state(engine, state_id, state_name):
-    """
-    update state name
-    """
-    stmt = update(State).where(State.id == state_id).values(name=state_name)
-    with engine.connect() as conn:
-        result = conn.execute(stmt)
+from sqlalchemy.orm import Session
 
 
 def main():
@@ -37,7 +29,11 @@ def main():
             password=sys.argv[2],
             database=sys.argv[3])
     engine = create_engine(conn_url)
-    update_state(engine, 2, 'New Mexico')
+    with Session(engine) as session:
+        state = session.query(State).get(2)
+        if state:
+            state.name = 'New Mexico'
+            session.commit()
 
 
 if __name__ == '__main__':
