@@ -32,8 +32,8 @@ def main():
     cur.execute("""
             SELECT states.id, states.name
             FROM states
-            WHERE states.name LIKE 'N%'
-            ORDER BY states.id""")
+            WHERE states.name LIKE BINARY %s
+            ORDER BY states.id""", ('%N%',))
     rows = cur.fetchall()
     for row in rows:
         print(row)
