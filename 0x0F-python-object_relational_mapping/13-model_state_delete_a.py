@@ -27,7 +27,7 @@ def main():
             username=sys.argv[1],
             password=sys.argv[2],
             database=sys.argv[3])
-    engine = create_engine(conn_url, echo=True)
+    engine = create_engine(conn_url, echo=False)
     stmt = delete(State).where(State.name.like('%a%'))
     with engine.connect() as conn:
         conn.execute(stmt)
