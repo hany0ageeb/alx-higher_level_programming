@@ -42,9 +42,9 @@ def main():
             username=sys.argv[1],
             password=sys.argv[2],
             database=sys.argv[3])
-    engine = create_engine(conn_url, echo=False)
+    engine = create_engine(conn_url, echo=True)
     with Session(engine) as session:
-        states = session.query(State).outerjoin(
+        states = session.query(State).join(
                 City).options(
                         contains_eager(
                             State.cities)).order_by(
