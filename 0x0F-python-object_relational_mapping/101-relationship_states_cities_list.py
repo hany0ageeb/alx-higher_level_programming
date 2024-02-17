@@ -52,7 +52,7 @@ def main():
         for state in states:
             print("{}: {}".format(state.id, state.name))
             for city in state.cities:
-                print("\t{}: {}".format(city.id, city.name))
+                print("    {}: {}".format(city.id, city.name))
 
 
 if __name__ == '__main__':
