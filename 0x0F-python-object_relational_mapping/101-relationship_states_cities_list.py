@@ -26,7 +26,7 @@ objects, contained in the database hbtn_0e_101_usa
 import sys
 from sqlalchemy import create_engine
 from sqlalchemy.engine import URL
-from sqlalchemy.orm import Session, contains_eager
+from sqlalchemy.orm import Session, contains_eager, joinedload
 from relationship_state import State
 from relationship_city import City
 
@@ -44,10 +44,10 @@ def main():
             database=sys.argv[3])
     engine = create_engine(conn_url, echo=True)
     with Session(engine) as session:
-        states = session.query(State).join(
+        states = session.query(State).outerjoin(
                 City).options(
-                        contains_eager(
-                            State.cities)).order_by(
+                        joinedload(
+                            State.cities, innerjoin=False)).order_by(
                                     State.id, City.id).all()
         for state in states:
             print("{}: {}".format(state.id, state.name))
