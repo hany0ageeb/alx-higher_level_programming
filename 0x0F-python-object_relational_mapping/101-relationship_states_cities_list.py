@@ -27,7 +27,7 @@ import sys
 from sqlalchemy import create_engine, select
 from sqlalchemy.engine import URL
 from sqlalchemy.orm import Session, contains_eager, joinedload
-from relationship_state import State
+from relationship_state import State, Base
 from relationship_city import City
 
 
@@ -46,9 +46,7 @@ def main():
     Base.metadata.create_all(engine)
     with Session(engine) as session:
         states = session.query(
-                State).options(
-                        joinedload(
-                            State.cities)).order_by(State.id).all()
+                State).order_by(State.id).all()
         for state in states:
             print("{}: {}".format(state.id, state.name))
             for city in state.cities:
