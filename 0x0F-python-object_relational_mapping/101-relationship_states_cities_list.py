@@ -31,16 +31,6 @@ from relationship_state import State
 from relationship_city import City
 
 
-def show_states(states):
-    """
-    displat the states along with cities
-    """
-    for state in states:
-        print("{}: {}".format(state.id, state.name))
-        for city in state.cities:
-            print("    {}: {}".format(city.id, city.name))
-
-
 def main():
     """
     Entry Point
@@ -53,15 +43,16 @@ def main():
             password=sys.argv[2],
             database=sys.argv[3])
     engine = create_engine(conn_url, echo=False)
-    # stmt = select(State).outerjoin(City).options(contains_eager(State.cities)).order_by(State.id, City.id)
     with Session(engine) as session:
         states = session.query(
                 State).outerjoin(
-                        City).options(
-                                contains_eager(State.cities)).order_by(
-                                        State.id,
-                                        City.id).all()
-        show_states(states)
+                        City).order_by(
+                                State.id,
+                                City.id).all()
+        for state in states:
+            print("{}: {}".format(state.id, state.name))
+            for city in state.cities:
+                print("    {}: {}".format(city.id, city.name))
 
 
 if __name__ == '__main__':
