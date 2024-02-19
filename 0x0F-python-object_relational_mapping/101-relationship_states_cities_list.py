@@ -24,9 +24,9 @@ objects, contained in the database hbtn_0e_101_usa
     7: Phoenix
 """
 import sys
-from sqlalchemy import create_engine, select
+from sqlalchemy import create_engine
 from sqlalchemy.engine import URL
-from sqlalchemy.orm import Session, contains_eager, joinedload
+from sqlalchemy.orm import sessionmaker
 from relationship_state import State, Base
 from relationship_city import City
 
@@ -44,9 +44,10 @@ def main():
             database=sys.argv[3])
     engine = create_engine(conn_url, echo=False)
     Base.metadata.create_all(engine)
-    with Session(engine) as session:
+    Session = sessionmaker(bind=engine)
+    with Session() as session:
         states = session.query(
-                State).order_by(State.id).all()
+                State).outerjoin(City).order_by(State.id).all()
         for state in states:
             print("{}: {}".format(state.id, state.name))
             for city in state.cities:
