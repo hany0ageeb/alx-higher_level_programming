@@ -43,6 +43,7 @@ def main():
             password=sys.argv[2],
             database=sys.argv[3])
     engine = create_engine(conn_url, echo=False)
+    Base.metadata.create_all(engine)
     with Session(engine) as session:
         states = session.query(
                 State).options(
