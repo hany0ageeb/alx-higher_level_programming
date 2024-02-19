@@ -45,10 +45,9 @@ def main():
     engine = create_engine(conn_url, echo=False)
     with Session(engine) as session:
         states = session.query(
-                State).outerjoin(
-                        City).order_by(
-                                State.id,
-                                City.id).all()
+                State).options(
+                        joinedload(
+                            State.cities)).order_by(State.id).all()
         for state in states:
             print("{}: {}".format(state.id, state.name))
             for city in state.cities:
