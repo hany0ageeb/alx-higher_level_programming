@@ -69,13 +69,13 @@ The browser receives the response message, interprets the message and displays t
 ## HTTP Request and Response Messages 
 HTTP client and server communicate by sending text messages. The client sends a request message to the server.  The server, in turn, returns a response message.
 An HTTP message consists of a message header and an optional message body, separated by a blank line, as illustrated below:
-![HTTP Messages](HTTP_MessageFormat.png)
+![HTTP Messages](images/HTTP_MessageFormat.png)
 
 ## HTTP Request Message
 
 The format of an HTTP request message is as follow:
 
-![HTTP Request Message](HTTP_RequestMessage.png)
+![HTTP Request Message](images/HTTP_RequestMessage.png)
 
 ### Request Line
 
@@ -107,13 +107,13 @@ Connection: Keep-Alive
 Accept: image/gif, image/jpeg, */*
 Accept-Language: us-en, fr, cn
 ```
-![HTTP Request Message Example](HTTP_RequestMessageExample.png)
+![HTTP Request Message Example](images/HTTP_RequestMessageExample.png)
 
 ## HTTP Response Message
 
 The format of the HTTP response message is as follows:
 
-![HTTP Response Message](HTTP_ResponseMessage.png)
+![HTTP Response Message](images/HTTP_ResponseMessage.png)
 
 ### Status Line
 The status line has the following syntax:
