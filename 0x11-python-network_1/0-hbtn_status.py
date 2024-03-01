@@ -11,13 +11,10 @@ def main():
     """
     with urlopen('https://alx-intranet.hbtn.io/status') as response:
         response_body = response.read()
-        print("""Body response:
-    - type: {}
-    - content: {}
-    - utf8 content: {}""".format(
-            type(response_body),
-            response_body,
-            response_body.decode('utf8')))
+        print('Body response:')
+        print('    - type: {}'.format(type(response_body)))
+        print('    - content: {}'.format(response_body))
+        print('    - utf8 content: {}'.format(response_body.decode('utf8')))
 
 
 if __name__ == '__main__':
