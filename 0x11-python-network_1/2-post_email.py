@@ -15,9 +15,9 @@ from urllib.parse import urlencode
 def main():
     """Entry Point"""
     req: Request = Request(
-        sys.argv[1],
-        data=urlencode({'email': sys.argv[2]}),
-        method='POST')
+            sys.argv[1],
+            data=urlencode({'email': sys.argv[2]}).encode('ascii'),
+            method='POST')
     with urlopen(req) as response:
         print(response.read().decode('utf8'))
 
