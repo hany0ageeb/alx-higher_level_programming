@@ -20,16 +20,12 @@ import requests
 
 def main():
     """Entry Point"""
-    repo = 'alx-higher_level_programming'
-    owner = 'hany0ageeb'
-    if len(sys.argv) > 1:
-        repo = sys.argv[1]
-    if len(sys.argv) > 2:
-        owner = sys.argv[2]
-    url = 'https://api.github.com/repos/' + owner + '/' + repo + '/commits'
+    url = 'https://api.github.com/repos/{}/{}/commits'.format(
+            sys.argv[2],
+            sys.argv[1])
     headers = {
         'Accept': 'application/vnd.github+json',
-        'Authorization': 'Bearer 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',
+        # 'Authorization': 'Bearer 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',
         'X-GitHub-Api-Version': '2022-11-28',
     }
     data = {
