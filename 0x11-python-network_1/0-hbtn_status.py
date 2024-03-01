@@ -11,7 +11,7 @@ def main():
     """
     with urlopen('https://alx-intranet.hbtn.io/status') as response:
         response_body = response.read()
-        print("""Body Response:
+        print("""Body response:
     - type: {}
     - content: {}
     - utf8 content: {}""".format(
