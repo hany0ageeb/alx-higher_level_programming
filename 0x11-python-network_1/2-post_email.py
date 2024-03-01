@@ -8,17 +8,17 @@ and displays the body of the resposne(decode in utf-8)
 3. you must use with statment
 """
 import sys
-from urllib.request import urlopen, Request
+from urllib.request import urlopen
 from urllib.parse import urlencode
 
 
 def main():
     """Entry Point"""
-    req: Request = Request(
+    with urlopen(
             sys.argv[1],
-            data=urlencode({'email': sys.argv[2]}).encode('ascii'),
-            method='POST')
-    with urlopen(req) as response:
+            data=urlencode({
+                'email': sys.argv[2]
+                }).encode('ascii')) as response:
         print(response.read().decode('utf8'))
 
 
