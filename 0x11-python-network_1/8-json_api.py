@@ -32,10 +32,7 @@ def main():
         else:
             print('No result')
     except requests.exceptions.JSONDecodeError:
-        if (response.status_code == 204):
-            print('No result')
-        else:
-            print('Not a valid JSON')
+        print('Not a valid JSON')
 
 
 if __name__ == '__main__':
