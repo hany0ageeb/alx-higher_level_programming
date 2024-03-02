@@ -39,10 +39,12 @@ def main():
     )
     if response.status_code == requests.codes.ok:
         commits = response.json()
-        for commit in commits:
+        for index, commit in enumerate(commits):
             print('{}: {}'.format(
                 commit['sha'],
                 commit['commit']['author']['name']))
+            if index >= 9:
+                break
 
 
 if __name__ == '__main__':
