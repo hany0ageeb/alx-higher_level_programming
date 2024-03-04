@@ -14,7 +14,6 @@
 """
 import sys
 import requests
-import requests.exceptions
 
 
 def main():
@@ -31,7 +30,7 @@ def main():
             print('[{}] {}'.format(data['id'], data['name']))
         else:
             print('No result')
-    except requests.exceptions.JSONDecodeError:
+    except requests.exceptions.InvalidJSONError:
         print('Not a valid JSON')
 
 
