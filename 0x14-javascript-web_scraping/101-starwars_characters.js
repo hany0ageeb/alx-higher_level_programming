@@ -15,12 +15,12 @@ request.get(url, (error, response, body) => {
   }
   if (response && response.statusCode === 200 && body) {
     JSON.parse(body).characters.forEach((characterUrl) => {
-      request.get(characterUrl, (error, response, body) => {
-        if (error) {
-          console.log(error);
+      request.get(characterUrl, (error1, response1, body1) => {
+        if (error1) {
+          console.log(error1);
         }
-        if (response && response.statusCode === 200 && body) {
-          const character = JSON.parse(body);
+        if (response1 && response1.statusCode === 200 && body1) {
+          const character = JSON.parse(body1);
           console.log(character.name);
         }
       });
