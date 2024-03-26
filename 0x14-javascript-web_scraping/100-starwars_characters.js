@@ -8,15 +8,15 @@ const request = require('request');
  * 4. You must use the module request
  */
 
-const url = 'https://swapi-api.alx-tools.com/api/people/';
-const filmUrl = `https://swapi-api.alx-tools.com/api/films/${process.argv[2]}/`;
+const url = `https://swapi-api.alx-tools.com/api/films/${process.argv[2]}/`;
 request.get(url, (error, response, body) => {
-  if (error) {
-    console.log(error);
-  }
-  if (response && response.statusCode === 200 && body) {
-    JSON.parse(body).results.filter((person) => person.films.includes(filmUrl)).forEach((person) => {
-      console.log(person.name);
+  if (!error && response && response.statusCode === 200 && body) {
+    JSON.parse(body).characters.forEach((characterUrl) => {
+      request.get(characterUrl, (error2, response2, body2) => {
+        if (!error2 && response2 && response2.statusCode === 200 && body2) {
+          console.log(JSON.parse(body2).name);
+        }
+      });
     });
   }
 });
