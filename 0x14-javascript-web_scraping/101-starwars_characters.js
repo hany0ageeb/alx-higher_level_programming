@@ -9,17 +9,15 @@ const request = require('request');
  */
 
 const url = `https://swapi-api.alx-tools.com/api/films/${process.argv[2]}/`;
-function printCharacterNames (urls) {
-  for (let index = 0; index < urls.length; index++) {
-    request.get(urls[index], (error, response, body) => {
-      if (!error && response && response.statusCode === 200 && body) {
-        console.log(JSON.parse(body).name);
-      }
-    });
-  }
+function printCharacterName (characterUrl) {
+  request.get(characterUrl, (error, response, body) => {
+    if (!error && response && response.statusCode === 200 && body) {
+      console.log(JSON.parse(body).name);
+    }
+  });
 }
 request.get(url, (error, response, body) => {
   if (!error && response && response.statusCode === 200 && body) {
-    printCharacterNames(JSON.parse(body).characters);
+    JSON.parse(body).characters.forEach((characterUrl) => printCharacterName(characterUrl));
   }
 });
