@@ -7,20 +7,15 @@ const request = require('request');
  * 3. You must use the module request
  */
 
-request.get(process.argv[2], function (error, response, body) {
+request.get(process.argv[2], (error, response, body) => {
   if (error) {
-    console.log(error);
+    return;
   }
-  if (response && response.statusCode === 200 && body) {
-    const characterUrl = 'https://swapi-api.alx-tools.com/api/people/18/';
-    const r = JSON.parse(body);
-    if (r && r.results) {
-      const films = JSON.parse(body).results.filter((film) => film.characters && film.characters.includes(characterUrl));
-      if (films) {
-        console.log(films.length);
-      } else {
-        console.log(0);
-      }
+  console.log(JSON.parse(body).results.reduce((count, movie) => {
+    if (movie.characters.includes('https://swapi-api.alx-tools.com/api/people/18/')) {
+      return count + 1;
+    } else {
+      return count;
     }
-  }
+  }, 0));
 });
