@@ -11,11 +11,13 @@ request.get(process.argv[2], function (error, response, body) {
   if (error) {
     console.log(error);
   }
-  if (response && response.statusCode === 200) {
-    if (response.headers['content-type'] === 'application/json') {
-      const characterUrl = 'https://swapi-api.alx-tools.com/api/people/18/';
-      const films = JSON.parse(body).results.filter((film) => film.characters.includes(characterUrl));
+  if (response && response.statusCode === 200 && body) {
+    const characterUrl = 'https://swapi-api.alx-tools.com/api/people/18/';
+    const films = JSON.parse(body).results.filter((film) => film.characters.includes(characterUrl));
+    if (films) {
       console.log(films.length);
+    } else {
+      console.log(0);
     }
   }
 });
