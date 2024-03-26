@@ -7,17 +7,20 @@ const request = require('request');
  * 3. You must use the Star wars API
  * 4. You must use the module request
  */
-
-const url = `https://swapi-api.alx-tools.com/api/films/${process.argv[2]}/`;
-function printCharacterName (characterUrl) {
-  request.get(characterUrl, (error, response, body) => {
-    if (!error && response && response.statusCode === 200 && body) {
-      console.log(JSON.parse(body).name);
-    }
-  });
+function printNames (characters, index) {
+  if (index < characters.length) {
+    request.get(characters[index], (error, response, body) => {
+      if (!error && response && response.statusCode === 200 && body) {
+        console.log(JSON.parse(body).name);
+        printNames(characters, index + 1);
+      }
+    });
+  }
 }
+const url = `https://swapi-api.alx-tools.com/api/films/${process.argv[2]}/`;
 request.get(url, (error, response, body) => {
   if (!error && response && response.statusCode === 200 && body) {
-    JSON.parse(body).characters.forEach((characterUrl) => printCharacterName(characterUrl));
+    const characters = JSON.parse(body).characters;
+    printNames(characters, 0);
   }
 });
